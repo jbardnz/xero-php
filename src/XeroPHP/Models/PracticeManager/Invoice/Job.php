@@ -42,7 +42,7 @@ class Job extends Remote\Model
      */
     public static function getGUIDProperty()
     {
-        return 'ID';
+        return 'UUID';
     }
 
     /**
@@ -80,6 +80,7 @@ class Job extends Remote\Model
     public static function getProperties()
     {
         return [
+            'UUID'                => [true, self::PROPERTY_TYPE_STRING, null, false, false],
             'ID'                => [true, self::PROPERTY_TYPE_STRING, null, false, false],
             'Name'              => [true, self::PROPERTY_TYPE_STRING, null, false, false],
             'Description'       => [false, self::PROPERTY_TYPE_STRING, null, false, false],
