@@ -22,7 +22,7 @@ class Job extends Remote\Model
      */
     public static function getResourceURI()
     {
-        return '';
+        return 'job.api/list';
     }
 
     /**
@@ -42,7 +42,7 @@ class Job extends Remote\Model
      */
     public static function getGUIDProperty()
     {
-        return '';
+        return 'ID';
     }
 
     /**
@@ -61,6 +61,9 @@ class Job extends Remote\Model
     public static function getSupportedMethods()
     {
         return [
+            Remote\Request::METHOD_POST,
+            Remote\Request::METHOD_PUT,
+            Remote\Request::METHOD_GET,
         ];
     }
 
