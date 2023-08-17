@@ -186,7 +186,7 @@ class Client extends Remote\Model
         if($method === Remote\Request::METHOD_POST){
              return 'client.api/add';
         }else if($method === Remote\Request::METHOD_PUT){
-             return 'client.api/contact/';
+             return 'client.api/update';
         }
         
         return 'client.api/list';
