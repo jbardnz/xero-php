@@ -291,7 +291,7 @@ class Application
 
             if($object::getAPIStem() === Remote\URL::API_PRACTICE_MANAGER){
                 $method = $object::supportsMethod(Request::METHOD_PUT) ? Request::METHOD_PUT : Request::METHOD_POST;
-                $uri = sprintf('%s/%s', $object::getResourceURI($method), $object->getGUID());
+                $uri = $object::getResourceURI($method);
             }else{
                 $method = $object::supportsMethod(Request::METHOD_POST) ? Request::METHOD_POST : Request::METHOD_PUT;
                 $uri = sprintf('%s/%s', $object::getResourceURI(), $object->getGUID());
