@@ -209,7 +209,7 @@ class Client extends Remote\Model
      */
     public static function getGUIDProperty()
     {
-        return 'ID';
+        return 'UUID';
     }
 
     /**
@@ -252,7 +252,7 @@ class Client extends Remote\Model
     public static function getProperties()
     {
         return [
-            'ID'                       => [false, self::PROPERTY_TYPE_INT, null, false, false],
+            'UUID'                     => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'Name'                     => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'FirstName'                => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'LastName'                 => [false, self::PROPERTY_TYPE_STRING, null, false, false],
@@ -311,9 +311,9 @@ class Client extends Remote\Model
     /**
      * @return int
      */
-    public function getID()
+    public function getUUID()
     {
-        return $this->_data['ID'];
+        return $this->_data['UUID'];
     }
 
     /**
@@ -321,10 +321,10 @@ class Client extends Remote\Model
      *
      * @return Client
      */
-    public function setID($value)
+    public function setUUID($value)
     {
-        $this->propertyUpdated('ID', $value);
-        $this->_data['ID'] = $value;
+        $this->propertyUpdated('UUID', $value);
+        $this->_data['UUID'] = $value;
 
         return $this;
     }
