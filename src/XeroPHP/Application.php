@@ -290,7 +290,7 @@ class Application
         if ($object->hasGUID()) {
             $method = $object::supportsMethod(Request::METHOD_POST) ? Request::METHOD_POST : Request::METHOD_PUT;
 
-            if($object::getAPIStem === Remote\URL::API_PRACTICE_MANAGER){
+            if($object::getAPIStem() === Remote\URL::API_PRACTICE_MANAGER){
                 $uri = sprintf('%s/%s', $object::getResourceURI($method), $object->getGUID());
             }else{
                 $uri = sprintf('%s/%s', $object::getResourceURI(), $object->getGUID());
@@ -300,7 +300,7 @@ class Application
             //In this case it's new
             $method = $object::supportsMethod(Request::METHOD_PUT) ? Request::METHOD_PUT : Request::METHOD_POST;
 
-             if($object::getAPIStem === Remote\URL::API_PRACTICE_MANAGER){
+             if($object::getAPIStem() === Remote\URL::API_PRACTICE_MANAGER){
                 $uri = $object::getResourceURI($method);
             }else{
                 $uri = $object::getResourceURI();
