@@ -186,6 +186,18 @@ class Client extends Remote\Model
         return 'client.api/list';
     }
 
+
+    public static function getResourcePostURI()
+    {
+        return 'client.api/add';
+    }
+
+
+    public static function getResourcePutURI()
+    {
+        return 'client.api/contact/';
+    }
+
     /**
      * Get the root node name.  Just the unqualified classname.
      *
