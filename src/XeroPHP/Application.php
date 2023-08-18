@@ -194,7 +194,7 @@ class Application
             throw new Remote\Exception\NotFoundException;
         }
 
-        $uri = sprintf('%s/%s', $class::getResourceURI(), $guid);
+        $uri = sprintf('%s/%s', $class::getResourceURI(null, true), $guid);
         $api = $class::getAPIStem();
 
         $url = new URL($this, $uri, $api);
