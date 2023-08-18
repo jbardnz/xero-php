@@ -179,9 +179,20 @@ class Staff extends Remote\Model
      *
      * @return string
      */
-    public static function getResourceURI()
+    public static function getResourceURI($method = null, $singleRecord = false)
     {
-        return 'staff.api/list';
+
+        $base_uri = 'staff.api';
+
+        if($singleRecord){
+            return $base_uri . '/get';
+        }else   if($method === Remote\Request::METHOD_POST){
+            return $base_uri . '/add';
+        }else if($method === Remote\Request::METHOD_PUT){
+            return $base_uri. '/update';
+        }
+
+        return $base_uri. '/list';
     }
 
     /**
