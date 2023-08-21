@@ -292,6 +292,7 @@ class Client extends Remote\Model
             'ReturnType'               => [false, self::PROPERTY_TYPE_ENUM, null, false, false],
             'PrepareActivityStatement' => [false, self::PROPERTY_TYPE_ENUM, null, false, false],
             'PrepareTaxReturn'         => [false, self::PROPERTY_TYPE_ENUM, null, false, false],
+            'AccountManagerUUID'       => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'Contacts'                 => [false, self::PROPERTY_TYPE_OBJECT, 'PracticeManager\\Client\\Contact', true, false],
             'Notes'                    => [false, self::PROPERTY_TYPE_OBJECT, 'PracticeManager\\Client\\Note', true, false],
             'Groups'                   => [false, self::PROPERTY_TYPE_OBJECT, 'PracticeManager\\Client\\Group', true, false],
@@ -1259,8 +1260,8 @@ class Client extends Remote\Model
      */
     public function setAccountManager($value)
     {
-        $this->propertyUpdated('AccountManager', $value);
-        $this->_data['AccountManager'] = $value;
+        $this->propertyUpdated('AccountManagerUUID', $value);
+        $this->_data['AccountManagerUUID'] = $value;
 
         return $this;
     }
