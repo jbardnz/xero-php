@@ -75,7 +75,7 @@ class Group extends Remote\Model
     public static function getProperties()
     {
         return [
-            'UUID'                => [true, self::PROPERTY_TYPE_STRING, null, false, false],
+            'UUID'                => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'Name'              => [true, self::PROPERTY_TYPE_STRING, null, false, false],
             'Taxable'       => [false, self::PROPERTY_TYPE_STRING, null, false, false],
         ];
