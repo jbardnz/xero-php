@@ -11,8 +11,12 @@ class Group extends Remote\Model
      *
      * @return string
      */
-    public static function getResourceURI()
+    public static function getResourceURI($method = null)
     {
+         if($method === Remote\Request::METHOD_POST){
+             return 'clientgroup.api/add';
+        }
+
         return 'clientgroup.api/list';
     }
 
