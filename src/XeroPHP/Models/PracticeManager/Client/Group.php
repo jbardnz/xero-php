@@ -75,8 +75,9 @@ class Group extends Remote\Model
     public static function getProperties()
     {
         return [
-            'UUID'                => [false, self::PROPERTY_TYPE_STRING, null, false, false],
-            'Name'              => [true, self::PROPERTY_TYPE_STRING, null, false, false],
+            'UUID'          => [false, self::PROPERTY_TYPE_STRING, null, false, false],
+            'Name'          => [true, self::PROPERTY_TYPE_STRING, null, false, false],
+            'ClientUUID'    => [true, self::PROPERTY_TYPE_STRING, null, false, false],
             'Taxable'       => [false, self::PROPERTY_TYPE_STRING, null, false, false],
         ];
     }
@@ -112,6 +113,15 @@ class Group extends Remote\Model
     {
         $this->propertyUpdated('Name', $value);
         $this->_data['Name'] = $value;
+
+        return $this;
+    }
+
+
+    public function setClientUUID($value)
+    {
+        $this->propertyUpdated('ClientUUID', $value);
+        $this->_data['ClientUUID'] = $value;
 
         return $this;
     }
