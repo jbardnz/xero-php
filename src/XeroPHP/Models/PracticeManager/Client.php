@@ -181,12 +181,16 @@ class Client extends Remote\Model
      *
      * @return string
      */
-    public static function getResourceURI($method = null)
+    public static function getResourceURI($method = null, $individual = null)
     {
         if($method === Remote\Request::METHOD_POST){
              return 'client.api/add';
         }else if($method === Remote\Request::METHOD_PUT){
              return 'client.api/update';
+        }
+
+        if($individual){
+            return 'client.api/get';
         }
         
         return 'client.api/list';
