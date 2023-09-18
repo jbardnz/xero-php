@@ -80,7 +80,7 @@ class Relationship extends Remote\Model
     public static function getProperties()
     {
         return [
-            'ID'             => [false, self::PROPERTY_TYPE_INT, null, false, false],
+            'UUID'           => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'Type'           => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'RelatedClient'  => [false, self::PROPERTY_TYPE_OBJECT, 'PracticeManager\\Client\\RelatedClient', false, false],
             'NumberOfShares' => [false, self::PROPERTY_TYPE_INT, null, false, false],
@@ -98,9 +98,9 @@ class Relationship extends Remote\Model
     /**
      * @return string
      */
-    public function getID()
+    public function getUUID()
     {
-        return $this->_data['ID'];
+        return $this->_data['UUID'];
     }
 
     /**
@@ -108,10 +108,10 @@ class Relationship extends Remote\Model
      *
      * @return Relationship
      */
-    public function setID($value)
+    public function setUUID($value)
     {
-        $this->propertyUpdated('ID', $value);
-        $this->_data['ID'] = $value;
+        $this->propertyUpdated('UUID', $value);
+        $this->_data['UUID'] = $value;
 
         return $this;
     }
