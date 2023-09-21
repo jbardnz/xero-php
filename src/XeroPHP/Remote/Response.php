@@ -328,6 +328,7 @@ class Response
                 case 'Staff':
                 case 'Client':
                 case 'Group':
+                case 'Job':
                     // some xero endpoints are 1D so we can parse them straight away
                     $this->elements[] = Helpers::XMLToArray($root_child);
 
