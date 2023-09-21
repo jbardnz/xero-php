@@ -2,6 +2,7 @@
 
 namespace XeroPHP\Models\PracticeManager\Invoice;
 
+use XeroPHP\Models\Accounting\Invoice;
 use XeroPHP\Remote;
 
 class Job extends Remote\Model
@@ -20,8 +21,14 @@ class Job extends Remote\Model
      *
      * @return string
      */
-    public static function getResourceURI()
+    public static function getResourceURI($method = null, $individual = null)
     {
+        if($method === Remote\Request::METHOD_POST){
+            return 'job.api/add';
+        }else if($method === Remote\Request::METHOD_PUT){
+            return 'job.api/update';
+        }
+
         return 'job.api/list';
     }
 
@@ -80,11 +87,19 @@ class Job extends Remote\Model
     public static function getProperties()
     {
         return [
-            'UUID'                => [true, self::PROPERTY_TYPE_STRING, null, false, false],
-            'ID'                => [true, self::PROPERTY_TYPE_STRING, null, false, false],
+            'UUID'              => [false, self::PROPERTY_TYPE_STRING, null, false, false],
+            'ID'                => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'Name'              => [true, self::PROPERTY_TYPE_STRING, null, false, false],
             'Description'       => [false, self::PROPERTY_TYPE_STRING, null, false, false],
-            'ClientOrderNumber' => [false, self::PROPERTY_TYPE_STRING, null, false, false],
+            'ClientUUID'        => [false, self::PROPERTY_TYPE_STRING, null, false, false],
+            'ContactUUID'       => [false, self::PROPERTY_TYPE_STRING, null, false, false],
+            'TemplateUUID'      => [false, self::PROPERTY_TYPE_STRING, null, false, false],
+            'CategoryUUID'      => [false, self::PROPERTY_TYPE_STRING, null, false, false],
+            'State'             => [false, self::PROPERTY_TYPE_STRING, null, false, false],
+            'Budget'            => [false, self::PROPERTY_TYPE_FLOAT, null, false, false],
+            'ClientNumber'      => [false, self::PROPERTY_TYPE_STRING, null, false, false],
+            'StartDate'         => [true, self::PROPERTY_TYPE_STRING, null, false, false],
+            'DueDate'           => [true, self::PROPERTY_TYPE_STRING, null, false, false],
             'Tasks'             => [false, self::PROPERTY_TYPE_OBJECT, 'PracticeManager\\Invoice\\Task', true, false],
             'Costs'             => [false, self::PROPERTY_TYPE_OBJECT, 'PracticeManager\\Invoice\\Cost', true, false],
         ];
@@ -161,9 +176,9 @@ class Job extends Remote\Model
     /**
      * @return string
      */
-    public function getClientOrderNumber()
+    public function getClientNumber()
     {
-        return $this->_data['ClientOrderNumber'];
+        return $this->_data['ClientNumber'];
     }
 
     /**
@@ -171,10 +186,128 @@ class Job extends Remote\Model
      *
      * @return self
      */
-    public function setClientOrderNumber($value)
+    public function setClientNumber($value)
     {
-        $this->propertyUpdated('ClientOrderNumber', $value);
-        $this->_data['ClientOrderNumber'] = $value;
+        $this->propertyUpdated('ClientNumber', $value);
+        $this->_data['ClientNumber'] = $value;
+
+        return $this;
+    }
+
+
+    public function getClientUUID()
+    {
+        return $this->_data['ClientUUID'];
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return self
+     */
+    public function setClientUUID($value)
+    {
+        $this->propertyUpdated('ClientUUID', $value);
+        $this->_data['ClientUUID'] = $value;
+
+        return $this;
+    }
+
+
+    public function getContactUUID()
+    {
+        return $this->_data['ContactUUID'];
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return self
+     */
+    public function setContactUUID($value)
+    {
+        $this->propertyUpdated('ContactUUID', $value);
+        $this->_data['ContactUUID'] = $value;
+
+        return $this;
+    }
+
+
+
+
+
+    public function getStartDate()
+    {
+        return $this->_data['StartDate'];
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return self
+     */
+    public function setStartDate($value)
+    {
+        $this->propertyUpdated('StartDate', $value);
+        $this->_data['StartDate'] = $value;
+
+        return $this;
+    }
+
+
+
+    public function getDueDate()
+    {
+        return $this->_data['DueDate'];
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return self
+     */
+    public function setDueDate($value)
+    {
+        $this->propertyUpdated('DueDate', $value);
+        $this->_data['DueDate'] = $value;
+
+        return $this;
+    }
+
+
+    public function getTemplateUUID()
+    {
+        return $this->_data['TemplateUUID'];
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return self
+     */
+    public function setTemplateUUID($value)
+    {
+        $this->propertyUpdated('TemplateUUID', $value);
+        $this->_data['TemplateUUID'] = $value;
+
+        return $this;
+    }
+
+
+    public function getState()
+    {
+        return $this->_data['State'];
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return self
+     */
+    public function setState($value)
+    {
+        $this->propertyUpdated('State', $value);
+        $this->_data['State'] = $value;
 
         return $this;
     }
