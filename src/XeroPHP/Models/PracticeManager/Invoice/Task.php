@@ -80,7 +80,7 @@ class Task extends Remote\Model
     public static function getProperties()
     {
         return [
-            'ID'                 => [false, self::PROPERTY_TYPE_INT, null, false, false],
+            'UUID'               => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'Name'               => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'Description'        => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'Minutes'            => [false, self::PROPERTY_TYPE_FLOAT, null, false, false],
@@ -100,9 +100,9 @@ class Task extends Remote\Model
     /**
      * @return string
      */
-    public function getID()
+    public function getUUID()
     {
-        return $this->_data['ID'];
+        return $this->_data['UUID'];
     }
 
     /**
@@ -110,10 +110,10 @@ class Task extends Remote\Model
      *
      * @return self
      */
-    public function setID($value)
+    public function setUUID($value)
     {
-        $this->propertyUpdated('ID', $value);
-        $this->_data['ID'] = $value;
+        $this->propertyUpdated('UUID', $value);
+        $this->_data['UUID'] = $value;
 
         return $this;
     }
