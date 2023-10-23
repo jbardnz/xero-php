@@ -29,6 +29,10 @@ class Job extends Remote\Model
             return 'job.api/update';
         }
 
+        if($individual){
+            return 'job.api/get';
+        }
+
         return 'job.api/list';
     }
 
@@ -97,9 +101,10 @@ class Job extends Remote\Model
             'CategoryUUID'      => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'State'             => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'Budget'            => [false, self::PROPERTY_TYPE_FLOAT, null, false, false],
-            'ClientNumber'      => [false, self::PROPERTY_TYPE_STRING, null, false, false],
+            'ClientOrderNumber'      => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'StartDate'         => [true, self::PROPERTY_TYPE_STRING, null, false, false],
             'DueDate'           => [true, self::PROPERTY_TYPE_STRING, null, false, false],
+            'Client'            => [false, self::PROPERTY_TYPE_OBJECT, 'PracticeManager\\Client', true, false],
             'Tasks'             => [false, self::PROPERTY_TYPE_OBJECT, 'PracticeManager\\Invoice\\Task', true, false],
             'Costs'             => [false, self::PROPERTY_TYPE_OBJECT, 'PracticeManager\\Invoice\\Cost', true, false],
         ];
@@ -110,6 +115,23 @@ class Job extends Remote\Model
         return false;
     }
 
+    public function getUUID()
+    {
+        return $this->_data['UUID'];
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return self
+     */
+    public function setUUID($value)
+    {
+        $this->propertyUpdated('UUID', $value);
+        $this->_data['UUID'] = $value;
+
+        return $this;
+    }
     /**
      * @return string
      */
