@@ -101,10 +101,10 @@ class Job extends Remote\Model
             'CategoryUUID'      => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'State'             => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'Budget'            => [false, self::PROPERTY_TYPE_FLOAT, null, false, false],
-            'ClientOrderNumber'      => [false, self::PROPERTY_TYPE_STRING, null, false, false],
+            'ClientOrderNumber' => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'StartDate'         => [true, self::PROPERTY_TYPE_STRING, null, false, false],
             'DueDate'           => [true, self::PROPERTY_TYPE_STRING, null, false, false],
-            'Client'            => [false, self::PROPERTY_TYPE_OBJECT, 'PracticeManager\\Client', true, false],
+            'Client'            => [false, self::PROPERTY_TYPE_OBJECT, 'PracticeManager\\Client', false, false],
             'Tasks'             => [false, self::PROPERTY_TYPE_OBJECT, 'PracticeManager\\Invoice\\Task', true, false],
             'Costs'             => [false, self::PROPERTY_TYPE_OBJECT, 'PracticeManager\\Invoice\\Cost', true, false],
         ];
@@ -198,9 +198,9 @@ class Job extends Remote\Model
     /**
      * @return string
      */
-    public function getClientNumber()
+    public function getClientOrderNumber()
     {
-        return $this->_data['ClientNumber'];
+        return $this->_data['ClientOrderNumber'];
     }
 
     /**
@@ -208,10 +208,10 @@ class Job extends Remote\Model
      *
      * @return self
      */
-    public function setClientNumber($value)
+    public function setClientOrderNumber($value)
     {
-        $this->propertyUpdated('ClientNumber', $value);
-        $this->_data['ClientNumber'] = $value;
+        $this->propertyUpdated('ClientOrderNumber', $value);
+        $this->_data['ClientOrderNumber'] = $value;
 
         return $this;
     }
@@ -233,6 +233,12 @@ class Job extends Remote\Model
         $this->_data['ClientUUID'] = $value;
 
         return $this;
+    }
+
+
+    public function getClient()
+    {
+        return $this->_data['Client'];
     }
 
 
