@@ -2,6 +2,7 @@
 
 namespace XeroPHP\Models\PracticeManager\Client;
 
+use XeroPHP\Models\PracticeManager\Client;
 use XeroPHP\Remote;
 
 class Group extends Remote\Model
@@ -11,10 +12,14 @@ class Group extends Remote\Model
      *
      * @return string
      */
-    public static function getResourceURI($method = null)
+    public static function getResourceURI($method = null, $individual = null)
     {
          if($method === Remote\Request::METHOD_POST){
              return 'clientgroup.api/add';
+        }
+
+        if($individual){
+            return 'clientgroup.api/get';
         }
 
         return 'clientgroup.api/list';
@@ -79,6 +84,7 @@ class Group extends Remote\Model
             'Name'          => [true, self::PROPERTY_TYPE_STRING, null, false, false],
             'ClientUUID'    => [true, self::PROPERTY_TYPE_STRING, null, false, false],
             'Taxable'       => [false, self::PROPERTY_TYPE_STRING, null, false, false],
+            'Clients'       => [false, self::PROPERTY_TYPE_OBJECT, 'PracticeManager\\Client', true, false],
         ];
     }
 
@@ -146,6 +152,16 @@ class Group extends Remote\Model
 
         return $this;
     }
+
+    /**
+     * @return Clients[]|Remote\Collection
+     */
+    public function getClients()
+    {
+        return $this->_data['Clients'];
+    }
+
+
 
 
 //    /**
