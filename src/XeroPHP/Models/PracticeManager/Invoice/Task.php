@@ -89,6 +89,7 @@ class Task extends Remote\Model
             'Amount'             => [false, self::PROPERTY_TYPE_FLOAT, null, false, false],
             'AmountTax'          => [false, self::PROPERTY_TYPE_FLOAT, null, false, false],
             'AmountIncludingTax' => [false, self::PROPERTY_TYPE_FLOAT, null, false, false],
+            'Completed'          => [false, self::PROPERTY_TYPE_BOOLEAN, null, false, false],
         ];
     }
 
@@ -282,6 +283,24 @@ class Task extends Remote\Model
     {
         $this->propertyUpdated('AmountIncludingTax', $value);
         $this->_data['AmountIncludingTax'] = $value;
+
+        return $this;
+    }
+
+    public function getCompleted()
+    {
+        return $this->_data['Completed'];
+    }
+
+    /**
+     * @param boolean $value
+     *
+     * @return self
+     */
+    public function setCompleted($value)
+    {
+        $this->propertyUpdated('Completed', $value);
+        $this->_data['Completed'] = $value;
 
         return $this;
     }
