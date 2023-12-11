@@ -323,4 +323,13 @@ class Contact extends Remote\Model
 
         return $this;
     }
+
+
+     public function setClientUUID($value)
+    {
+        $this->propertyUpdated('Client', $value);
+        $this->_data['Client']['UUID'] = $value;
+
+        return $this;
+    }
 }
