@@ -124,6 +124,7 @@ class Contact extends Remote\Model
             'Email'      => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'Phone'      => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'Position'   => [false, self::PROPERTY_TYPE_STRING, null, false, false],
+            'Client'     => [false, self::PROPERTY_TYPE_OBJECT, 'PracticeManager\\Invoice\\Client', false, false],
         ];
     }
 
@@ -325,10 +326,10 @@ class Contact extends Remote\Model
     }
 
 
-     public function setClientUUID($value)
+     public function setClient($value)
     {
         $this->propertyUpdated('Client', $value);
-        $this->_data['Client']['UUID'] = $value;
+        $this->_data['Client'] = $value;
 
         return $this;
     }
