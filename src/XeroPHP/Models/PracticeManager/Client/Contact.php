@@ -42,9 +42,17 @@ class Contact extends Remote\Model
      *
      * @return string
      */
-    public static function getResourceURI()
+    public static function getResourceURI($method = null, $individual = null)
     {
-        return 'Contact';
+        if($method === Remote\Request::METHOD_POST){
+             return 'client.api/contact';
+        }
+
+        if($individual){
+            return 'client.api/contact';
+        }
+
+        return 'client.api/contacts';
     }
 
     /**
@@ -83,6 +91,9 @@ class Contact extends Remote\Model
     public static function getSupportedMethods()
     {
         return [
+            Remote\Request::METHOD_POST,
+            Remote\Request::METHOD_DELETE,
+            Remote\Request::METHOD_GET,
         ];
     }
 
