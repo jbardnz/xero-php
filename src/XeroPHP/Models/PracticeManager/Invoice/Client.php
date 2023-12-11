@@ -2,9 +2,10 @@
 
 namespace XeroPHP\Models\PracticeManager\Invoice;
 
-use XeroPHP\Models\PracticeManager\Model\IdAndNameModel;
 
-class Client extends IdAndNameModel
+use XeroPHP\Models\PracticeManager\Model\UuidAndNameModel;
+
+class Client extends UuidAndNameModel
 {
     /**
      * Get the root node name.  Just the unqualified classname.
