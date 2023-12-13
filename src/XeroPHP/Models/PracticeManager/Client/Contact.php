@@ -48,6 +48,11 @@ class Contact extends Remote\Model
              return 'client.api/contact';
         }
 
+        if($method === Remote\Request::METHOD_PUT){
+            return 'client.api/contact';
+        }
+
+
         if($individual){
             return 'client.api/contact';
         }
@@ -92,6 +97,7 @@ class Contact extends Remote\Model
     {
         return [
             Remote\Request::METHOD_POST,
+            Remote\Request::METHOD_PUT,
             Remote\Request::METHOD_DELETE,
             Remote\Request::METHOD_GET,
         ];
