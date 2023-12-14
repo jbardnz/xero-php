@@ -293,7 +293,7 @@ class Application
                 $method = $object::supportsMethod(Request::METHOD_PUT) ? Request::METHOD_PUT : Request::METHOD_POST;
 
                 if($object->getRootNodeName() === 'Contact'){
-                    $uri = sprintf('%s/%s', $object::getResourceURI(), $object->getGUID());
+                    $uri = sprintf('%s/%s', $object::getResourceURI($method), $object->getGUID());
                 }else{
                     $uri = $object::getResourceURI($method);
                 }
