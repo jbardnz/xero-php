@@ -187,7 +187,7 @@ class Contact extends Remote\Model
     /**
      * The default payment terms for the contact – see Payment Terms.
      *
-     * @property PaymentTerm[] PaymentTerms
+     * @property PaymentTerm PaymentTerms
      */
 
     /**
@@ -328,6 +328,7 @@ class Contact extends Remote\Model
             'IsCustomer' => [false, self::PROPERTY_TYPE_BOOLEAN, null, false, false],
             'DefaultCurrency' => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'XeroNetworkKey' => [false, self::PROPERTY_TYPE_STRING, null, false, false],
+            'MergedToContactID' => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'SalesDefaultAccountCode' => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'PurchasesDefaultAccountCode' => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'SalesTrackingCategories' => [false, self::PROPERTY_TYPE_OBJECT, 'Accounting\\TrackingCategory', true, false],
@@ -808,6 +809,27 @@ class Contact extends Remote\Model
     /**
      * @return string
      */
+    public function getMergedToContactID()
+    {
+        return $this->_data['MergedToContactID'];
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return Contact
+     */
+    public function setMergedToContactID($value)
+    {
+        $this->propertyUpdated('MergedToContactID', $value);
+        $this->_data['MergedToContactID'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
     public function getSalesDefaultAccountCode()
     {
         return $this->_data['SalesDefaultAccountCode'];
@@ -938,7 +960,7 @@ class Contact extends Remote\Model
     }
 
     /**
-     * @return PaymentTerm[]|Remote\Collection
+     * @return PaymentTerm|Remote\Collection
      */
     public function getPaymentTerms()
     {
@@ -956,7 +978,23 @@ class Contact extends Remote\Model
         if (! isset($this->_data['PaymentTerms'])) {
             $this->_data['PaymentTerms'] = new Remote\Collection();
         }
-        $this->_data['PaymentTerms'][] = $value;
+        $this->_data['PaymentTerms'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param PaymentTerm $value
+     *
+     * @return Contact
+     */
+    public function setPaymentTerm(PaymentTerm $value)
+    {
+        $this->propertyUpdated('PaymentTerms', $value);
+        if (! isset($this->_data['PaymentTerms'])) {
+            $this->_data['PaymentTerms'] = new Remote\Collection();
+        }
+        $this->_data['PaymentTerms'] = $value;
 
         return $this;
     }
