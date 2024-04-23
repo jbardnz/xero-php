@@ -279,6 +279,7 @@ class Client extends Remote\Model
             'ReferralSource'           => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'ExportCode'               => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'IsProspect'               => [false, self::PROPERTY_TYPE_STRING, null, false, false],
+            'IsArchived'               => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'TaxNumber'                => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'CompanyNumber'            => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'BusinessNumber'           => [false, self::PROPERTY_TYPE_STRING, null, false, false],
@@ -794,6 +795,14 @@ class Client extends Remote\Model
         $this->_data['IsProspect'] = $value;
 
         return $this;
+    }
+
+     /**
+     * @return string
+     */
+    public function getIsArchived()
+    {
+        return $this->_data['IsArchived'];
     }
 
     /**
