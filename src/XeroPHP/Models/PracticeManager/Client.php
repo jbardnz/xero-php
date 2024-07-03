@@ -192,7 +192,7 @@ class Client extends Remote\Model
         if($individual){
             return 'client.api/get';
         }
-        
+
         return 'client.api/list';
     }
 
@@ -298,6 +298,7 @@ class Client extends Remote\Model
             'PrepareActivityStatement' => [false, self::PROPERTY_TYPE_ENUM, null, false, false],
             'PrepareTaxReturn'         => [false, self::PROPERTY_TYPE_ENUM, null, false, false],
             'AccountManagerUUID'       => [false, self::PROPERTY_TYPE_STRING, null, false, false],
+            'JobManagerUUID'           => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'Contacts'                 => [false, self::PROPERTY_TYPE_OBJECT, 'PracticeManager\\Client\\Contact', true, false],
             'Notes'                    => [false, self::PROPERTY_TYPE_OBJECT, 'PracticeManager\\Client\\Note', true, false],
             'Groups'                   => [false, self::PROPERTY_TYPE_OBJECT, 'PracticeManager\\Client\\Group', true, false],
@@ -1294,8 +1295,8 @@ class Client extends Remote\Model
      */
     public function setJobManager($value)
     {
-        $this->propertyUpdated('JobManager', $value);
-        $this->_data['JobManager'] = $value;
+        $this->propertyUpdated('JobManagerUUID', $value);
+        $this->_data['JobManagerUUID'] = $value;
 
         return $this;
     }
