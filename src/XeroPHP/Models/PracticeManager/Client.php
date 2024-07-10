@@ -278,6 +278,7 @@ class Client extends Remote\Model
             'Website'                  => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'ReferralSource'           => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'ExportCode'               => [false, self::PROPERTY_TYPE_STRING, null, false, false],
+            'ClientCode'               => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'IsProspect'               => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'IsArchived'               => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'TaxNumber'                => [false, self::PROPERTY_TYPE_STRING, null, false, false],
@@ -773,6 +774,25 @@ class Client extends Remote\Model
     {
         $this->propertyUpdated('ExportCode', $value);
         $this->_data['ExportCode'] = $value;
+
+        return $this;
+    }
+
+
+    public function getClientCode()
+    {
+        return $this->_data['ClientCode'];
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return Client
+     */
+    public function setClientCode($value)
+    {
+        $this->propertyUpdated('ClientCode', $value);
+        $this->_data['ClientCode'] = $value;
 
         return $this;
     }
