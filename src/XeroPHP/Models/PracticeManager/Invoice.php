@@ -107,13 +107,18 @@ class Invoice extends Remote\Model
      */
 
 
-    /**
-     * Get the resource uri of the class (Clients) etc.
-     *
-     * @return string
-     */
-    public static function getResourceURI()
+    public static function getResourceURI($method = null, $individual = null)
     {
+//        if($method === Remote\Request::METHOD_POST){
+//            return 'client.api/add';
+//        }else if($method === Remote\Request::METHOD_PUT){
+//            return 'client.api/update';
+//        }
+
+        if($individual){
+            return 'invoice.api/get';
+        }
+
         return 'invoice.api/list';
     }
 
@@ -175,6 +180,7 @@ class Invoice extends Remote\Model
         return [
             'InternalID'         => [false, self::PROPERTY_TYPE_INT, null, false, false],
             'ID'                 => [false, self::PROPERTY_TYPE_STRING, null, false, false],
+            'UUID'               => [false, self::PROPERTY_TYPE_STRING, null, false, false],
             'Type'               => [true, self::PROPERTY_TYPE_STRING, null, false, false],
             'Status'             => [false, self::PROPERTY_TYPE_ENUM, null, false, false],
             'JobText'            => [false, self::PROPERTY_TYPE_STRING, null, false, false],
@@ -216,6 +222,24 @@ class Invoice extends Remote\Model
     {
         $this->propertyUpdated('InternalID', $value);
         $this->_data['InternalID'] = $value;
+
+        return $this;
+    }
+
+    public function getUUID()
+    {
+        return $this->_data['UUID'];
+    }
+
+    /**
+     * @param int $value
+     *
+     * @return Client
+     */
+    public function setUUID($value)
+    {
+        $this->propertyUpdated('UUID', $value);
+        $this->_data['UUID'] = $value;
 
         return $this;
     }
